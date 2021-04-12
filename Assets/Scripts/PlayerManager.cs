@@ -44,8 +44,9 @@ public class PlayerManager : MonoBehaviour
     }
     public void Recover()
     {
-        if (lifeValue ==0)
+        if (lifeValue ==1)
         {
+            lifeValue--;
             isDefeat = true;
             Invoke("ReturnToMenu", 3);
         }

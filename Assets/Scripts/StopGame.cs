@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class Option : MonoBehaviour
+public class StopGame : MonoBehaviour
 {
     private int choice = 0;
     public Transform posOne;
     public Transform posTwo;
-    public GameObject aboutUI;
+    public PlayerManager pm;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,18 +27,15 @@ public class Option : MonoBehaviour
             choice = 2;
             transform.position = posTwo.position;
         }
-        if (choice==1&& Input.GetKeyDown(KeyCode.Space))
+        if (choice == 1 && Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(1);
+            pm.stopUI.SetActive(false);
             Time.timeScale = 1;
+            //pm.timeScale=1;
         }
         if (choice == 2 && Input.GetKeyDown(KeyCode.Space))
         {
-            aboutUI.SetActive(true);
-        }
-        if (choice == 2 && Input.GetKeyDown(KeyCode.Escape))
-        {
-                aboutUI.SetActive(false);
+            SceneManager.LoadScene(0);
         }
     }
 }
